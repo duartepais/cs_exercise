@@ -1,6 +1,7 @@
 package dpais.exercise;
 
 import java.sql.*;
+import java.sql.SQLException;
 
 public class Database {
 	public static String connectionString = "jdbc:hsqldb:file:db-data/myfiledb";

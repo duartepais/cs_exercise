@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import java.lang.Math;
-
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -18,16 +16,16 @@ public class CSExercise {
 
 	public static void main(String[] args) {
 		
-		
-
-		long startTime = System.nanoTime();			// start timestamp
-		
 		// get input path of the file to analyse
 		System.out.println("Type the path of your file: ");
 		Scanner scanner = new Scanner(System.in);
 		String directory = scanner.nextLine();
 		System.out.println("Analysing the file " + directory);
 		scanner.close();
+		
+
+		
+		long startTime = System.nanoTime();			// start timestamp
 
 		// initialise hashmaps (dictionaires)
 		HashMap<String, InputEvent> startedEvents = new HashMap<>();
@@ -47,7 +45,6 @@ public class CSExercise {
 
 				// append the event to the appropriate hashmap
 				if (inputEv.state.equals("STARTED")) {
-
 					startedEvents.put(inputEv.id, inputEv);
 				} else {
 					finishedEvents.put(inputEv.id, inputEv);
@@ -81,7 +78,7 @@ public class CSExercise {
 			duration = Math.abs((int) (finishedEvents.get(key).timestamp - startedEv.timestamp));			// calculate the duration of each event
 			AnalysedEvent outputEv = new AnalysedEvent(startedEv.host, startedEv.type, duration);			// get the corresponding output event object
 			
-			// insert the output event into the database
+			 //insert the output event into the database
 			try {
 				analysedDB.insert(key, outputEv);
 			} catch (SQLException e) {
