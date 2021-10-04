@@ -10,14 +10,16 @@ public class Database {
 	
 	
 	public Database() {
+		// establish connection with database
 	       try {
 	    	   Class.forName("org.hsqldb.jdbc.JDBCDriver");
 	    	   con = DriverManager.getConnection(connectionString, "SA", "");
-	       } catch (Exception ex) {
-	          ex.printStackTrace();
+	       } catch (Exception e) {
+	          e.printStackTrace();
 	       }
 	     }
 	
+	// finish the connection with the database
 	public void closeConnection() {
 	       if (con == null) return;
 	       try {
@@ -28,6 +30,7 @@ public class Database {
 	       }
 	     }
 	
+	// create a SQL table in the connected database with the requested event info
 	public void create() throws SQLException {
 	       if (con == null) {
 	          throw new SQLException("Connection inexistent");
@@ -39,6 +42,7 @@ public class Database {
 
 	    }
 	
+	// insert analysed events in to the database
 	public void insert(String key, AnalysedEvent value) throws SQLException {
 	       if (con == null)
 	          throw new SQLException("Connection inexistent");
